@@ -1,7 +1,7 @@
 package leetcode.editor.cn;
 
 /**
- * @author tangkun
+ * @author t4nGk
  * @version 1.0.0
  * @since 2020/7/22 5:04 下午
  */
