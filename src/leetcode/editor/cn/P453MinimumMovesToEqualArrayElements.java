@@ -33,37 +33,20 @@ public class P453MinimumMovesToEqualArrayElements {
     public static void main(String[] args) {
         Solution solution = new P453MinimumMovesToEqualArrayElements().new Solution();
         // TO TEST
-//        System.out.println(solution.minMoves(new int[] {1, 2, 3}));
-        Queue<Integer> dq = new PriorityQueue<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
-            }
-        });
-        if (1 == 2)
-        dq.add(2);
-        dq.add(1);
-        dq.add(3);
-        System.out.println(dq.remove());
-        System.out.println(dq.remove());
-        System.out.println(dq.remove());
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int minMoves(int[] nums) {
-            int len = nums.length;
-            int sum = 0;
-            for (int num : nums) {
-                sum += num;
+            int min = Integer.MAX_VALUE;
+            int res = 0;
+            for (int i = 0; i < nums.length; i++) {
+                min = Math.min(min, nums[i]);
             }
-            int time = 0;
-            while (true) {
-                float lval = (float)((len - 1) * time + sum) / (float) len;
-                int intVal = ((len - 1) * time + sum) / len;
-                if (lval == intVal) return time;
-                time++;
+            for (int i = 0; i < nums.length; i++) {
+                res += (nums[i] - min);
             }
+            return res;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
