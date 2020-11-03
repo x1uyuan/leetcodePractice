@@ -71,29 +71,21 @@ public class P941ValidMountainArray {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public boolean validMountainArray(int[] A) {
-            int len = A.length;
-            if (len < 3) return false;
-            int left = 0;
-            int leftTag = 0;
-            int right = len - 1;
-            int rightTag = 0;
-            for (int i = 0; i < len - 1; i++) {
-                if (A[i] < A[i + 1]) left = i + 1;
-                else {
-                    leftTag = 1;
-                    break;
-                }
+            int left = 0, right = A.length - 1;
+            boolean leftFlag = false, rightFlag = false;
+            for (int i = 0; i < A.length - 1; i++) {
+                if (A[left + 1] > A[left]) {
+                    left++;
+                    leftFlag = true;
+                } else break;
             }
-
-            for (int i = len - 1; i > 0; i--) {
-                if (A[i] < A[i - 1]) right = i - 1;
-                else {
-                    rightTag = 1;
-                    break;
-                }
+            for (int j = 0; j < A.length - 1; j++) {
+                if (A[right - 1] > A[right]) {
+                    right--;
+                    rightFlag = true;
+                } else break;
             }
-
-            return leftTag == 1 && rightTag == 1 && left == right;
+            return leftFlag && rightFlag && left == right;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
