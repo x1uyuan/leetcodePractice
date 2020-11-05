@@ -18,7 +18,7 @@
 
 package leetcode.editor.cn;
 
-import apple.laf.JRSUIUtils;
+import com.sun.istack.NotNull;
 
 /**
  * Java：左叶子之和
@@ -41,9 +41,24 @@ public class P404SumOfLeftLeaves {
      * }
      */
     class Solution {
+        int sum = 0;
 
         public int sumOfLeftLeaves(TreeNode root) {
-            return 0;
+            if (root == null) return 0;
+            helper(root);
+            return sum;
+        }
+
+        private void helper(@NotNull TreeNode node) {
+            if (node.left != null) {
+                if (node.left.left == null && node.left.right == null) sum += node.left.val;
+                else {
+                    helper(node.left);
+                }
+            }
+            if (node.right != null) {
+                helper(node.right);
+            }
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
