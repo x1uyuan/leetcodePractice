@@ -43,7 +43,7 @@ public class P6ZigzagConversion {
     public static void main(String[] args) {
         Solution solution = new P6ZigzagConversion().new Solution();
         // TO TEST
-        solution.convert("A",1);
+        solution.convert("PAYPALISHIRING", 3);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -52,7 +52,7 @@ public class P6ZigzagConversion {
             if (numRows == 1) return s;
             int len = s.length();
             int divide = 2 * numRows - 2;
-            int circle = (int) Math.ceil((double)len / (double)divide);
+            int circle = (int) Math.ceil((double) len /divide);
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < numRows; i++) {
                 for (int j = 0; j < circle; j++) {
